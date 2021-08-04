@@ -6,7 +6,7 @@
 
 ### [📚 Object Relational Tutorial (1.x API)](https://docs.sqlalchemy.org/en/14/orm/tutorial.html#object-relational-tutorial-1-x-api)
 
-### Python에서 사용가능한 ORM(Object-relational mapping).
+### Python에서 사용가능한 ORM(Object-relational mapping)
 
 - `ORM`은 객체(Object)와 관계(Relational)를 연결해주는 역할을 한다.
 
