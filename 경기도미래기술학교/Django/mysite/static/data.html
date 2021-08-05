@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트 페이지</title>
+</head>
+
+<body>
+    <!-- form: 사용자가 입력한 정보를 서버로 전달하기 위해서 사용 -->
+    <!-- action: 입력한 정보를 전달할 서버의 주소 -->
+    <form action="/data/" method="post">
+        {% csrf_token %}
+        <!-- name이 지정되어야 서버에서 전달된 값을 알아낼 수 있음 -->
+        <input type="text" name="age">
+        <button>송신</button>
+    </form>
+</body>
+
+</html>

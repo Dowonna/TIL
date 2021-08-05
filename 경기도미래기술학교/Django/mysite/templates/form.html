@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 등록 페이지</title>
+</head>
+
+<body>
+    <form action="/polls/proc/" method="get">
+        {% csrf_token %}
+        <input type="text" name="deptno">
+        <input type="text" name="dname">
+        <input type="text" name="loc">
+        <button>DB에 추가하기</button>
+    </form>
+</body>
+
+</html>
