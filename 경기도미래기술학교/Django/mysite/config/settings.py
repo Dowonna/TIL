@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@*jh-=_w42j0d0o6wmp@t+ejj#xfyr4ez1mul*n$m44pt#_5qc'
+SECRET_KEY = 'YOUR_SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+### SQLite(Default)
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -92,30 +93,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
-### MariaDB 연동(pythondb)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'pythondb',
-#         'USER': 'root',
-#         'PASSWORD': '1234',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#     }
-# }
-
-### MariaDB 연동(강사님 DB)
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'human',
-#         'USER': 'human',
-#         'PASSWORD': '1234',
-#         'HOST': '15.164.153.191',
-#         'PORT': '3306',
-#     }
-# }
 
 LOGGING = {
     'version': 1,
