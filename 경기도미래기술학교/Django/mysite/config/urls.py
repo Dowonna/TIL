@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import polls.views as views
+from polls import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('data/', views.data),  # "form action" 연습용 페이지 작성
     path('polls/', include('polls.urls')),
+    path('another/', include('another.urls')),
     path('', views.index),
 ]

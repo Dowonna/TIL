@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>질문 상세 조회 페이지</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
 </head>
 
 <body>
+    {% extends 'base.html' %}
+    {% block content %}
     <div class="container my-3">
         <h2 class="border-bottom py-2">{{ question.subject }}</h2>
         <div class="card my-3">
@@ -46,12 +46,25 @@
         <!-- 답변 등록 UI 생성 -->
         <form action="{% url 'polls:answer_create' question.id %}" method="post" class="my-3">
             {% csrf_token %}
+            <!-- 질문 상세 페이지에서 오류메시지 출력 시작 -->
+            {% if form.errors %}
+                <div class="alert alert-warning" role="alert">
+                    {% for field in form %}
+                        {% if field.errors %}
+                        <strong>{{ field.label }}</strong>
+                        {{ field.errors }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <!-- 질문 상세 페이지에서 오류메시지 출력 끝 -->
             <div class="form-group">
                 <textarea name="content" id="content" class="form-control" rows="10"></textarea>
             </div>
             <input type="submit" value="답변 등록" class="btn btn-primary">
         </form>
     </div>
+    {% endblock %}
 </body>
 
 </html>
