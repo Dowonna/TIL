@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.utils import timezone
 from .models import Question, Dept
@@ -6,11 +7,21 @@ from .forms import QuestionForm, AnswerForm
 
 # Create your views here.
 def index(request):
+    page = request.GET.get('page', '1')  # 페이지 등록
+
+    # 페이지 조회
     question_list = Question.objects.order_by('pub_date')
     # result = [q.subject for q in question_list]
+
+    # 페이징 처리
+    paginator = Paginator(question_list, 10)  # 한 페이지에 10개 컬럼 출력
+    page_obj = paginator.get_page(page)
+
+    context = {'question_list': page_obj}
     
     # return HttpResponse(str(result))
-    return render(request, 'polls/question_list.html', {'question_list': question_list})
+    # return render(request, 'polls/question_list.html', {'question_list': question_list})
+    return render(request, 'polls/question_list.html', context)
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)

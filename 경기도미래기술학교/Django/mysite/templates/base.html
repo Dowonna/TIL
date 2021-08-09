@@ -21,10 +21,10 @@
 <body>
     <!-- # navbar.html Loading -->
     {% include 'navbar.html' %}
-    <!-- # 기본 Template 안에 삽일될 내용 시작 -->
+    {% comment %}# 기본 Template 안에 삽일될 내용 시작 {% endcomment %}
     {% block content %}
     {% endblock %}
-    <!-- # 기본 Template 안에 삽일될 내용 끝 -->
+    {% comment %}# 기본 Template 안에 삽일될 내용 끝{% endcomment %}
 </body>
 
 </html>

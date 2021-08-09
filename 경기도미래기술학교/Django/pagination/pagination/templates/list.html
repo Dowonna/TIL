@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>페이징 리스트 페이지</title>
+</head>
+
+<body style="margin: 30px;">
+    <table class="table table-striped">
+        <tr>
+            <td>번호</td><td>내용</td><td>작성일시</td>
+        </tr>
+        {% for data in info %}
+        <tr>
+            <td>{{ data.id }}</td>
+            <td>{{ data.text }}</td>
+            <td>{{ data.cre_date | date:'Y-m-d H:i:s'}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전 페이지 -->
+        {% if datas.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ datas.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지 리스트 -->
+        {% for page_number in datas.paginator.page_range %}
+        {% if page_number >= datas.number|add:-3 and page_number <= datas.number|add:3 %}
+            {% if page_number == datas.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음 페이지 -->
+        {% if datas.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ datas.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+</body>
+
+</html>

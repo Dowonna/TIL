@@ -43,10 +43,10 @@
         </div>
         {% endfor %}
 
-        <!-- 답변 등록 UI 생성 -->
+        {% comment %} 답변 등록 UI 생성{% endcomment %}
         <form action="{% url 'polls:answer_create' question.id %}" method="post" class="my-3">
             {% csrf_token %}
-            <!-- 질문 상세 페이지에서 오류메시지 출력 시작 -->
+            {% comment %}질문 상세 페이지에서 오류메시지 출력 시작{% endcomment %}
             {% if form.errors %}
                 <div class="alert alert-warning" role="alert">
                     {% for field in form %}
@@ -57,7 +57,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
-            <!-- 질문 상세 페이지에서 오류메시지 출력 끝 -->
+            {% comment %}질문 상세 페이지에서 오류메시지 출력 끝{% endcomment %}
             <div class="form-group">
                 <textarea name="content" id="content" class="form-control" rows="10"></textarea>
             </div>
